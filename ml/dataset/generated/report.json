@@ -1,0 +1,22 @@
+{
+  "total_samples_generated": 176,
+  "samples_per_corruption": {
+    "missing_semicolon": 38,
+    "missing_closing_paren": 26,
+    "missing_closing_brace": 17,
+    "missing_comma": 14,
+    "replace_delimiter": 43,
+    "unexpected_token": 38
+  },
+  "train_count": 110,
+  "validation_count": 36,
+  "test_count": 30,
+  "rejected_count": 0,
+  "rejection_reasons": {
+    "invalid_base_source": 0,
+    "corruption_did_not_error": 0,
+    "no_context_extracted": 0,
+    "roundtrip_repair_failed": 0,
+    "duplicate_sample": 0
+  }
+}

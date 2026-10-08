@@ -1,0 +1,12 @@
+Program
+├── FunctionDeclaration: add(a, b)
+│   └── BlockStatement
+│       └── ReturnStatement
+│           └── BinaryExpression: +
+│               ├── Identifier: a
+│               └── Identifier: b
+└── VariableDeclaration: x
+    └── CallExpression
+        ├── Identifier: add
+        ├── Literal: 1 (Integer)
+        └── Literal: 2 (Integer)

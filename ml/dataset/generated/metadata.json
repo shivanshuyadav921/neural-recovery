@@ -1,0 +1,21 @@
+{
+  "dataset_version": "0.1.0",
+  "language": "NeuroLang",
+  "generator_version": "0.1.0",
+  "random_seed": 42,
+  "context_before": 50,
+  "context_after": 10,
+  "corruption_types": [
+    "missing_semicolon",
+    "missing_closing_paren",
+    "missing_closing_brace",
+    "missing_comma",
+    "replace_delimiter",
+    "unexpected_token"
+  ],
+  "split_ratios": {
+    "train": 0.8,
+    "validation": 0.1,
+    "test": 0.1
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "name": "neuroparse-vscode",
+  "displayName": "NeuroParse",
+  "description": "IDE client for the NeuroParse research compiler with neural syntax error recovery and interactive diagnostics.",
+  "version": "0.1.0",
+  "publisher": "neuroparse",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Snippets"
+  ],
+  "keywords": [
+    "neurolang",
+    "neuroparse",
+    "neural",
+    "compiler",
+    "diagnostics"
+  ],
+  "activationEvents": [
+    "onLanguage:neurolang"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "neurolang",
+        "extensions": [
+          ".nl"
+        ],
+        "aliases": [
+          "NeuroLang",
+          "neurolang"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "neurolang",
+        "scopeName": "source.neurolang",
+        "path": "./syntaxes/neurolang.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "neuroparse.analyzeFile",
+        "title": "Analyze Current File",
+        "category": "NeuroParse"
+      },
+      {
+        "command": "neuroparse.explainError",
+        "title": "Explain Syntax Error Under Cursor",
+        "category": "NeuroParse"
+      },
+      {
+        "command": "neuroparse.traceRecovery",
+        "title": "View Recovery Trace for Current File",
+        "category": "NeuroParse"
+      },
+      {
+        "command": "neuroparse.setRecoveryMode",
+        "title": "Change Recovery Mode",
+        "category": "NeuroParse"
+      },
+      {
+        "command": "neuroparse.showOutput",
+        "title": "Show Output Channel",
+        "category": "NeuroParse"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "NeuroParse",
+      "properties": {
+        "neuroparse.compilerPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the NeuroParse compiler executable (`neuroparse` or `neuroparse.exe`). Leave empty to auto-detect."
+        },
+        "neuroparse.recoveryMode": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "neural",
+            "heuristic",
+            "panic",
+            "none"
+          ],
+          "default": "auto",
+          "description": "Error recovery strategy used by the compiler."
+        },
+        "neuroparse.runMode": {
+          "type": "string",
+          "enum": [
+            "onType",
+            "onSave",
+            "manual"
+          ],
+          "default": "onType",
+          "description": "When to run the NeuroParse compiler for diagnostics."
+        },
+        "neuroparse.debounceDelay": {
+          "type": "number",
+          "default": 300,
+          "description": "Debounce delay in milliseconds before invoking the compiler on document changes."
+        },
+        "neuroparse.timeoutMs": {
+          "type": "number",
+          "default": 5000,
+          "description": "Compiler process timeout in milliseconds."
+        },
+        "neuroparse.traceRecovery": {
+          "type": "boolean",
+          "default": false,
+          "description": "Log detailed parser recovery traces to the NeuroParse output channel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.3.3"
+  }
+}

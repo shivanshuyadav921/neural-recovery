@@ -1,0 +1,3 @@
+pytest>=8.0
+# Phase 9+: torch, numpy, onnx, onnxruntime
+# Do not install cloud LLM SDKs for core recovery.
